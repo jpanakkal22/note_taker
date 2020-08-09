@@ -15,6 +15,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+// Routes
+// =============================================================
+
+// Basic route that sends the user first to the AJAX Page
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+    });
+
+app.get("/notes", function(req, res) {
+    res.sendFile(path.join(__dirname, "public/notes.html"));
+  }); 
+  
+  
+// Displays all notes
+app.get("/api/notes", function(req, res) {
+    // return res.json(characters);
+    res.sendFile(path.join(__dirname, "db/db.json"));
+  });
+  
+
+
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
